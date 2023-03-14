@@ -27,6 +27,8 @@ Telegram::Bot::Client.run(TG_TOKEN, environment: TG_ENV) do |bot|
     when Telegram::Bot::Types::Message
       bot.api.send_message(chat_id: message.chat.id, text:  handle_message(message: message.text, user_id: message.chat.id.to_s))
     end
+  rescue => e
+    p e
   end
 end
 
