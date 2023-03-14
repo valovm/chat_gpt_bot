@@ -15,7 +15,10 @@ def handle_message(message:, user_id:)
     temperature: 0.7,
     user: user_id,
   })
+
   response.dig("choices", 0, "message", "content")
+rescue
+  'Oops something is wrong, please try later'
 end
 
 Telegram::Bot::Client.run(TG_TOKEN, environment: TG_ENV) do |bot|
